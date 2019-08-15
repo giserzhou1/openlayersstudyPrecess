@@ -1,0 +1,18 @@
+游戏循环，帧循环，渲染循环，概念一样
+while(true){
+  update-status { 控制人物}
+  draw()  {当前清空，绘制当前画面}
+}
+帧数 48-60帧游戏，电影24帧/s不卡
+相机的工作原理
+平行光的是正投影，人眼睛观察模式的是透视投影
+平行光正投影
+THREE.OrthographicCamera = function(left,right,top,bottom,near,far)
+透视相机
+PerspectiveCamera(fov,aspect,near,far)
+camera.lookat指的是相机指的方向
+相机up方向，是垂直与相机快门的方向 up方向和lookat方向应该必须垂直
+dat.gui.js
+3d世界的纹理->图片->皮肤
+加载纹理
+纹理的重复与回环

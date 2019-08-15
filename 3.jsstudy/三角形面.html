@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Three框架</title>
+    <script src="three.js"></script>
+    <script src="Tween.js"></script>
+    <script src="stats.js"></script>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script>
+        var renderer;
+        var stats = new Stats();
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(width, height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+            renderer.setClearColor(0xFFFFFF, 1.0);
+            stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
+            document.body.appendChild(stats.dom);
+        }
+
+
+
+        var camera;
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            camera.position.x = 0;
+            camera.position.y = 0;
+            camera.position.z = 300;
+        }
+
+        var scene;
+
+        function initScene() {
+            scene = new THREE.Scene();
+        }
+
+        var light;
+
+        function initLight() {
+            light = new THREE.DirectionalLight(0xFFFFFF, 1.0, 0);
+            light.position.set(1000, 1000, 2000);
+            scene.add(light);
+        }
+
+
+        var geometry = new THREE.Geometry();
+        var material = new THREE.MeshBasicMaterial({
+            vertexColors: THREE.VertexColors
+        });
+
+        function initObject() {
+
+
+            //create a triangular geometry
+
+            geometry.vertices.push(new THREE.Vector3(-50, -50, 0));
+            geometry.vertices.push(new THREE.Vector3(50, -50, 0));
+            geometry.vertices.push(new THREE.Vector3(50, 50, 0));
+
+            var color1 = new THREE.Color(0xFF0000)
+            var color2 = new THREE.Color(0x00FF00)
+            var color3 = new THREE.Color(0x0000FF)
+
+            var face = new THREE.Face3(0, 1, 2);
+            face.vertexColors[0] = color1
+            face.vertexColors[1] = color2
+            face.vertexColors[2] = color3
+
+            //add the face to the geometry's faces array
+            geometry.faces.push(face);
+
+            //the face normals and vertex normals can be calculated automatically if not supplied above
+            geometry.computeFaceNormals();
+            geometry.computeVertexNormals();
+
+            scene.add(new THREE.Mesh(geometry, material));
+        }
+
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+            initObject();
+            renderer.clear();
+            renderer.render(scene, camera)
+        }
+    </script>
+</head>
+
+<body onload="threeStart();">
+    <div id="canvas-frame"></div>
+</body>
+
+</html>
