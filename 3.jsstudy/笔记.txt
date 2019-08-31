@@ -16,3 +16,14 @@ dat.gui.js
 3d世界的纹理->图片->皮肤
 加载纹理
 纹理的重复与回环
+模型的正面和反面
+右手坐标系，逆时针是正面，顺时针是反面
+这里的正反面与物体前面和后面不是一个概念
+函数中定义使用下面这句时，如果不用函数中的this.XX指的是函数在定义时的this，使用了之后
+self=this相当于取了个别名，函数运行时self=this，self.XX就是函数运行环境中的this
+var self = this
+BufferGeometry,BufferAttribute增加效率优化的
+Detector.js检查浏览器是否支持webgl
+模型的下载网站
+www.cc.gatech.edu/projects/large_models/
+https://www.cc.gatech.edu/projects/large_models/

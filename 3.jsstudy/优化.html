@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Three框架</title>
+    <script src="three.js"></script>
+    <script src="Tween.js"></script>
+    <script src="stats.js"></script>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script>
+        var renderer;
+        var stats = new Stats();
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({
+                antialias: false
+            });
+            renderer.setSize(width, height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+            renderer.setClearColor(0xFFFFFF, 1.0);
+            renderer.setPixelRatio(window.devicePixelRatio)
+            stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
+            document.body.appendChild(stats.dom);
+        }
+
+
+
+        var camera;
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 0.5, 10000);
+            camera.position.set(0, 0, 3000);
+        }
+
+        var scene;
+
+        function initScene() {
+            scene = new THREE.Scene();
+        }
+
+        var light;
+
+        function initLight() {
+            light1 = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+            light1.position.set(1, 1, 1);
+            scene.add(light1);
+
+            light2 = new THREE.DirectionalLight(0xFFFFFF, 1.5);
+            light2.position.set(0, -1, 0);
+            scene.add(light2);
+        }
+
+
+        var geometry = new THREE.BufferGeometry();
+        var cube = null
+
+        function initObject() {
+            var triangles = 1600000
+            var positions = new Float32Array(triangles * 3 * 3)
+            var normals = new Float32Array(triangles * 3 * 3)
+            var colors = new Float32Array(triangles * 3 * 3)
+            var color = new THREE.Color()
+            var n = 800,
+                n2 = n / 2
+            var d = 12,
+                d2 = d / 2
+
+            var pA = new THREE.Vector3()
+            var pB = new THREE.Vector3()
+            var pC = new THREE.Vector3()
+
+            var cb = new THREE.Vector3()
+            var ab = new THREE.Vector3()
+
+            for (var i = 0; i < positions.length; i += 9) {
+                var x = Math.random() * n - n2;
+                var y = Math.random() * n - n2;
+                var z = Math.random() * n - n2;
+
+                var ax = x + Math.random() * d - d2
+                var ay = y + Math.random() * d - d2
+                var az = z + Math.random() * d - d2
+
+                var bx = x + Math.random() * d - d2
+                var by = y + Math.random() * d - d2
+                var bz = z + Math.random() * d - d2
+
+                var cx = x + Math.random() * d - d2
+                var cy = y + Math.random() * d - d2
+                var cz = z + Math.random() * d - d2
+
+                positions[i] = ax
+                positions[i + 1] = ay
+                positions[i + 2] = az
+
+                positions[i + 3] = bx
+                positions[i + 4] = by
+                positions[i + 5] = bz
+
+                positions[i + 6] = cx
+                positions[i + 7] = cy
+                positions[i + 8] = cz
+
+                pA.set(ax, ay, az)
+                pB.set(bx, by, bz)
+                pC.set(cx, cy, cz)
+
+                cb.subVectors(pC, pB)
+                ab.subVectors(pA, pB)
+                    //得到三角形的法向量，存在cb中
+                cb.cross(ab)
+                    //将法向量单位化
+                cb.normalize()
+                var nx = cb.x
+                var ny = cb.y
+                var nz = cb.z
+                normals[i] = nx
+                normals[i + 1] = ny
+                normals[i + 2] = nz
+
+                normals[i + 3] = nx
+                normals[i + 4] = ny
+                normals[i + 5] = nz
+
+                normals[i + 6] = nx
+                normals[i + 7] = ny
+                normals[i + 8] = nz
+
+                var vx = (x / n) + 0.5
+                var vy = (y / n) + 0.5
+                var vz = (z / n) + 0.5
+
+                color.setRGB(vx, vy, vz)
+                colors[i] = color.r
+                colors[i + 1] = color.g
+                colors[i + 2] = color.b
+
+
+                colors[i + 3] = color.r
+                colors[i + 4] = color.g
+                colors[i + 5] = color.b
+
+                colors[i + 6] = color.r
+                colors[i + 7] = color.g
+                colors[i + 8] = color.b
+
+            }
+            geometry.addAttribute('position', new THREE.BufferAttribute(positions, 3))
+            geometry.addAttribute('normal', new THREE.BufferAttribute(normals, 3))
+            geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3))
+
+            // geometry.computeBoundingSphere()
+            var material = new THREE.MeshPhongMaterial({
+                vertexColors: THREE.VertexColors,
+                side: THREE.DoubleSide,
+                color: 0xaaaaaa,
+                specular: 0xffffff,
+                shininess: 250
+            });
+            cube = new THREE.Mesh(geometry, material)
+            scene.add(cube);
+        }
+
+        function render() {
+            stats.begin();
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+            stats.end();
+            requestAnimationFrame(render);
+        }
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+            initObject();
+            renderer.clear();
+            render()
+        }
+    </script>
+</head>
+
+<body onload="threeStart();">
+    <div id="canvas-frame"></div>
+</body>
+
+</html>

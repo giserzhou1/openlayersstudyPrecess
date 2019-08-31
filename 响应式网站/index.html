@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="img/reset.css" />
+    <title>练习小网站</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        html {
+            font-size: 62.5%;
+        }
+        
+        body {
+            font-size: 1.2em;
+            background-color: #E6E6FA;
+            /* =14px */
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            /* =24px */
+        }
+        
+        a {
+            text-decoration: none;
+            color: #87CEFA;
+        }
+        
+        .text {
+            color: #87CEFA;
+            line-height: 2em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        header {
+            height: 5%;
+            background-color: #483D8B;
+            display: flex;
+            flex-direction: row-reverse;
+            position: relative;
+            align-items: center;
+            /*垂直居中*/
+        }
+        
+        header .item {
+            margin-right: 2em;
+            margin-left: 2em;
+            color: #E6E6FA;
+        }
+        
+        header .item2 {
+            margin: 0;
+        }
+        
+        header .item1 {
+            margin-right: 8em;
+            cursor: pointer;
+        }
+        
+        header .item3 a {
+            color: #E6E6FA;
+            text-decoration: none;
+        }
+        
+        header .item1 .item-content {
+            display: none;
+            position: absolute;
+            background-color: #B0C4DE;
+            min-width: 15em;
+            box-shadow: 0px 0.8em 1em 0px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+        }
+        
+        header .item1 .item-content a {
+            color: blue;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            display: block;
+        }
+        
+        header .item1:hover .item-content {
+            display: inline-block;
+        }
+        
+        .item-content a:hover {
+            color: green;
+        }
+        
+        .navigator {
+            display: flex;
+            height: 13%;
+            background-color: ivory;
+        }
+        
+        .navigator .nav {
+            height: 100%;
+            flex: 0 0 70%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navigator .nav .logo {
+            flex: 1;
+            /* width: 100%; */
+            height: 100%;
+        }
+        
+        .navigator .nav .logo img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .navigator .nav .item {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+        
+        .navigator .item2 {
+            flex: 0 0 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            font-size: 1em;
+            box-shadow: 0px 0.8em 1em 0px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 4;
+        }
+        
+        .navigator .nav .item:hover {
+            background-color: #483D8B;
+        }
+        
+        .navigator .nav .item:hover .nav-content {
+            display: block;
+            background-color: #483D8B;
+        }
+        
+        .nav-content a:hover {
+            background-color: #9932CC
+        }
+        
+        .nav-content a {
+            display: block;
+            width: 100%;
+            height: 1.7em;
+            line-height: 1.7em;
+        }
+        
+        .login {
+            padding: 3% 5%;
+            border: 0.1em solid #4B0082;
+            background: #48D1CC;
+            /* width: 30%; */
+            border-radius: 35%;
+            position: relative;
+        }
+        
+        .register {
+            padding: 3% 5%;
+            border: 0.1em solid #4B0082;
+            background: ivory;
+            /* width: 10em; */
+            border-radius: 35%;
+            margin-left: 15%;
+        }
+        
+        @media screen and (max-width: 900px) {
+            .navigator {
+                height: auto!important;
+                height: 80%;
+                width: 94%;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+            }
+            .navigator .nav {
+                height: 100%;
+                flex: 0 0 70%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .navigator .nav .logo {
+                flex: 0 0 10%;
+                /* width: 100%; */
+                height: 100%;
+            }
+            .navigator .nav .logo img {
+                width: 100%;
+                height: 100%;
+            }
+            .navigator .nav .item {
+                overflow: auto;
+                /* flex: 1; */
+                width: 100%;
+                position: relative;
+                font-size: 1.3em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: visible;
+                z-index: 1;
+            }
+            .navigator .item2 {
+                flex: 0 0 30%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .nav-content {
+                display: none;
+                position: absolute;
+                /* top: 100%; */
+                width: 100%;
+                font-size: 1em;
+                box-shadow: 0px 0.8em 1em 0px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                z-index: 1;
+            }
+            .navigator .nav .item:hover {
+                background-color: #483D8B;
+            }
+            .navigator .nav .item:hover .nav-content {
+                /* display: block; */
+                visibility: block;
+                background-color: #483D8B;
+            }
+            .nav-content a:hover {
+                background-color: #9932CC
+            }
+            .nav-content a {
+                display: block;
+                width: 100%;
+                height: 1.7em;
+                line-height: 1.7em;
+            }
+            .login {
+                padding: 0.1% 0.2%;
+                border: 0.01em solid #4B0082;
+                background: #48D1CC;
+                /* width: 30%; */
+                border-radius: 15%;
+                position: relative;
+            }
+            .register {
+                padding: 0.1% 0.2%;
+                border: 0.01em solid #4B0082;
+                background: ivory;
+                /* width: 10em; */
+                border-radius: 15%;
+                margin-left: 10%;
+            }
+            html {
+                font-size: 20%;
+            }
+        }
+        
+        .ma {
+            position: absolute;
+            display: none;
+            background-color: #9932CC;
+            min-width: 15em;
+            box-shadow: 0px 0.8em 1em 0px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+        }
+        
+        .login:hover .ma {
+            display: block;
+        }
+        
+        .lunbo {
+            height: auto!important;
+            height: 40%;
+            width: 94%;
+            position: relative;
+            margin: 0 auto;
+            z-index: -10;
+        }
+        
+        .mySlides {
+            display: none;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        
+        .mySlides a {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .mySlides a img {
+            height: 100%;
+            width: 100%;
+        }
+        /* 幻灯片容器 */
+        /* 下一张 & 上一张 按钮 */
+        
+        .prev,
+        .next {
+            display: inline;
+            cursor: pointer;
+            position: absolute;
+            top: 45%;
+            /* margin-top: -2.2em; */
+            color: white;
+            font-weight: bold;
+            font-size: 3em;
+            transition: 0.6s ease;
+            /* border-radius: 0 0.3em 0.3em 0; */
+        }
+        /* 定位 "下一张" 按钮靠右 */
+        
+        .next {
+            right: 0;
+            border-radius: 0.3em 0 0 0.3em;
+        }
+        /* On hover, add a black background color with a little bit see-through */
+        
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* 标题文本 */
+        /* 数字文本 (1/3 等) */
+        
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 1.2em;
+            padding: 0.8em 1.2em;
+            position: absolute;
+            top: 0;
+        }
+        /* 标记符号 */
+        
+        .dots {
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 1em;
+            width: 1em;
+            margin: 0 0.2em;
+            background-color: blue;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 1s;
+        }
+        
+        .active,
+        .dot:hover {
+            background-color: red;
+        }
+        /* 淡出动画 */
+        
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        .notice {
+            height: 1em;
+            width: 94%;
+            margin: 0.5em auto;
+        }
+        
+        .notice-img {
+            height: 0.9em;
+            width: 0.8em;
+            display: inline-block;
+        }
+        
+        .notice a p {
+            display: inline;
+        }
+        
+        .noticeMore {
+            float: right;
+        }
+        
+        .card {
+            height: 40%;
+            width: 94%;
+            margin: 1em auto;
+            background-color: ivory;
+        }
+        
+        .brand {
+            height: 55%;
+            border-bottom: 0.1em solid red;
+            display: flex;
+        }
+        
+        .brand .item {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: margin-top 0.8s;
+        }
+        
+        .brand .item:hover {
+            margin-top: 1em;
+        }
+        
+        .number li+li {
+            border-left: 0.1em solid red;
+        }
+        
+        .number {
+            height: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .number .item {
+            flex: 1;
+        }
+        
+        .data {
+            color: #F0E68C;
+        }
+        
+        .product {
+            width: 94%;
+            height: 5%;
+            margin: 1em auto;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .product h1 {
+            float: left;
+        }
+        
+        .product span {
+            float: left;
+        }
+        
+        .product a {
+            float: right;
+        }
+        
+        .product-card {
+            height: 30%;
+            display: flex;
+            width: 94%;
+            margin: 0 auto;
+        }
+        
+        .product-card .item {
+            flex: 1;
+            background-color: ivory;
+            margin: 0.5em 1em;
+            padding: 2em 3em;
+            border: 0.1em solid ivory;
+            border-radius: 0.5em;
+            transition: margin 0.7s;
+        }
+        
+        .product-card div:hover {
+            margin: 0 0.5em;
+            animation: bigger 0.3s;
+        }
+        
+        @keyframes bigger {
+            from {
+                filter: blur(0);
+            }
+            to {
+                filter: blur(3px);
+            }
+        }
+        
+        @-webkit-keyframes bigger
+        /* Safari and Chrome */
+        
+        {
+            from {
+                -webkit-filter: blur(0);
+            }
+            to {
+                -webkit-filter: blur(3px);
+            }
+        }
+        
+        .rate {
+            color: red;
+            font-size: 3em;
+        }
+        
+        .moneynumber {
+            color: #F0E68C;
+            display: inline;
+            font-size: 3em;
+        }
+        
+        .card-title {
+            height: 30%;
+            font-size: 2em;
+            color: #000;
+        }
+        
+        @media screen and (max-width: 1000px) {
+            .product-card {
+                display: flex;
+                height: 150%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        @media screen and (max-height: 650px) {
+            .product-card {
+                display: flex;
+                height: 150%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        .scatter {
+            background-color: ivory;
+            width: 94%;
+            margin: 2rem auto;
+        }
+        
+        .person-card {
+            height: 50%;
+            width: 100%;
+        }
+        
+        .person-card a {
+            width: 100%;
+            display: flex;
+        }
+        
+        .person-card a img {
+            flex: 0 0 70%;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .person-card a span {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 5%;
+        }
+        
+        .person-card a span span {
+            color: red;
+            display: inline-block;
+            width: 15%;
+            margin: 50% 0;
+            font-size: 1.3rem;
+            border: 0.1rem solid red;
+        }
+        
+        .person-card a span span:hover {
+            background-color: red;
+            color: ivory;
+        }
+        
+        .scatter div+div {
+            border-top: 0.1rem solid red;
+        }
+        
+        .easy-borrow {
+            width: 94%;
+            margin: 0 auto;
+            height: 25%;
+            display: flex;
+            /* background-color: ivory; */
+            margin-bottom: 2%;
+        }
+        
+        .easy-borrow .card {
+            margin: 1% 1%;
+            flex: 1;
+            width: 50%;
+            height: 100%;
+        }
+        
+        .easy-borrow .card a {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .easy-borrow .card a img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .news {
+            background-color: ivory;
+            display: flex;
+            height: 40%;
+        }
+        
+        .news .item {
+            margin-left: 2%;
+            margin-right: 2%;
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .news .item .product {
+            display: block;
+            height: 20%;
+        }
+        
+        .news-card {
+            height: 75%;
+            display: flex;
+            box-shadow: 0.5em 0.5em 0.2em #66CDAA;
+        }
+        
+        .news-img {
+            flex: 0 0 35%;
+            height: 100%;
+            width: 35%;
+        }
+        
+        .news-text {
+            flex: 0 0 50%;
+            height: 100%;
+            width: 65%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .news-title {
+            width: 8em;
+            font-size: 1.8em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        /* @media screen and (max-width: 600px) {
+            html {
+                font-size: 15%;
+            }
+        } */
+        
+        .media {
+            height: 20%;
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <div class=" item item1">
+            <span onmouseover="changeStart(this)" onmouseout="changeEnd(this)">论坛/客服∨</span>
+            <div class="item-content">
+                <a href="#">创收大厅</a>
+                <a href="#">创收大厅</a>
+                <a href="#">创收大厅</a>
+            </div>
+        </div>
+        <div class="item item2"><span>|</span></div>
+        <div class="item item3"><a href="#">INVESTORS</a></div>
+    </header>
+    <nav class="navigator">
+        <div class="nav">
+
+            <a class='logo' href="#"><img src="img/logo.png" alt=""></a>
+
+            <div class="item">
+                <span>彩虹标</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>散标</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>我要借款</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>我的账户</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>信息披露</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>新时代</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+            <div class="item"> <span>APP下载</span>
+                <div class="nav-content">
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                    <a href="#">创收大厅</a>
+                </div>
+            </div>
+        </div>
+        <div class="item2">
+            <span class="login">
+                <span>登录∨</span>
+            <div class="ma"><span>扫码登录喽</span>
+                <img src="img/ma.png" alt=""></div>
+            </span>
+            <span class="register"><a href="#">注册</a></span>
+        </div>
+    </nav>
+    <div class='lunbo' id="play">
+
+        <div class="mySlides fade">
+            <a href="#">
+                <div class="numbertext" style="width:100%;">1 / 5</div>
+                <img src="img/1.jpg">
+            </a>
+            <span class="prev" onclick="plusSlides(-1)">❮</span>
+            <span class="next" onclick="plusSlides(1)">❯</span>
+        </div>
+        <div class="mySlides fade">
+            <a href="#">
+                <div class="numbertext">2 / 5</div>
+                <img src="img/2.png"></a>
+            <span class="prev" onclick="plusSlides(-1)">❮</span>
+            <span class="next" onclick="plusSlides(1)">❯</span>
+        </div>
+        <div class="mySlides fade">
+            <a href="#">
+                <div class="numbertext">3 / 5</div>
+                <img src="img/3.png"></a>
+            <span class="prev" onclick="plusSlides(-1)">❮</span>
+            <span class="next" onclick="plusSlides(1)">❯</span>
+        </div>
+        <div class="mySlides fade">
+            <a href="#">
+                <div class="numbertext">4 / 5</div>
+                <img src="img/4.png"></a>
+            <span class="prev" onclick="plusSlides(-1)">❮</span>
+            <span class="next" onclick="plusSlides(1)">❯</span>
+        </div>
+        <div class="mySlides fade">
+            <a href="#">
+                <div class="numbertext">5 / 5</div>
+                <img src="img/5.jpg"></a>
+
+            <span class="prev" onclick="plusSlides(-1)">❮</span>
+            <span class="next" onclick="plusSlides(1)">❯</span>
+        </div>
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+    </div>
+    <div class="notice">
+        <a href=""><img class='notice-img' src="img/notice.png" alt=""></a>
+        <a href="">
+            <p>系统维护公告 2019月8月20日</p>
+        </a>
+        <a href="">
+            <p class="noticeMore">更多公告></p>
+        </a>
+    </div>
+    <div class="card">
+        <ul class="brand">
+            <li class="item">
+                <a href=""><img src="img/上市.png" alt=""></a>
+            </li>
+            <li class="item">
+                <a href=""><img src="img/上市.png" alt=""></a>
+            </li>
+            <li class="item">
+                <a href=""><img src="img/上市.png" alt=""></a>
+            </li>
+            <li class="item">
+                <a href=""><img src="img/上市.png" alt=""></a>
+            </li>
+        </ul>
+        <ul class="number">
+            <li class="item">
+                <a href="">
+                    <span>平台安全运营了<span class="data">1000年</span></span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="">
+                    <span>累计注册用户<span class="data">800亿</span>
+                    </span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="">
+                    <span>累计成交金额<span class="data">8000000亿</span>
+                    </span>
+                </a>
+            </li>
+            <li class="item">
+                <a href="">
+                    <span>累计给公司创造收入<span class="data">1亿亿</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section class="product">
+        <h1>新彩虹</h1>
+        <span class="text">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;自动投标服务 多种期限 每日6点-25点开售</span>
+        <a href="">
+            <p>查看更多></p>
+        </a>
+    </section>
+    <div class="product-card">
+        <div class="item">
+            <a href="">
+                <h2 class='card-title'>
+                    新彩虹-30天授权服务期<br> ——
+                </h2>
+                <br>
+                <br>
+                <span>
+                  <span class="rate">4</span> %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="moneynumber">
+                                        1000
+                                    </span>元起投
+                <br>
+                <span class="text">历史参考扣费后利率</span>
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text">30天后可免费转让</span>
+
+            </a>
+        </div>
+        <div class="item">
+            <a href="">
+                <div class='card-title'>
+                    新彩虹-30天授权服务期<br> ——
+                </div>
+                <br>
+                <br>
+                <span>
+                    <span class="rate">4</span> %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="moneynumber">
+                                1000
+                            </span>元起投
+                <br>
+                <span class="text">历史参考扣费后利率</span>
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text">30天后可免费转让</span>
+            </a>
+        </div>
+        <div class="item">
+            <a href="">
+                <h2 class='card-title'>
+                    新彩虹-30天授权服务期<br> ——
+                </h2>
+                <br>
+                <br>
+                <span>
+                            <span class="rate">4</span> %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="moneynumber">
+                                1000
+                            </span>元起投
+                <br>
+                <span class="text">历史参考扣费后利率</span>
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="text">30天后可免费转让</span>
+
+            </a>
+        </div>
+    </div>
+
+    <section class="product">
+        <h1>散标</h1>
+        <span class="text">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;魔镜风控审核 个人借款标的</span>
+    </section>
+    <div class="scatter">
+        <div class="person-card">
+            <a href="">
+                <img src="img/scatter.png" alt="">
+                <!-- <span><span>立即出借</span> -->
+                </span>
+            </a>
+        </div>
+        <div class="person-card">
+            <a href="">
+                <img src="img/scatter.png" alt="">
+                <!-- <span><span>立即出借</span> -->
+                </span>
+            </a>
+        </div>
+    </div>
+    <section class="product">
+        <h1>快速出借</h1>
+        <span class="text">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;一键设置投标 高效便捷</span>
+    </section>
+    <div class="easy-borrow">
+        <div class="card ">
+            <a href=""><img src="img/quick.png" alt=""></a>
+        </div>
+        <div class="card">
+            <a href=""><img src="img/quick.png" alt=""></a>
+        </div>
+    </div>
+    <div class="news">
+        <div class="item">
+            <div class="product">
+                <h1>学习强国</h1>
+                <a>查看更多></a>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><img src="img/news.png" alt=""></div>
+                <div class="news-text">
+                    <span><span style="color:#9932CC;font-size:2em;">|</span><span class="news-title">&nbsp;&nbsp;&nbsp;红网评论：让扫黑除恶始终在法治轨道......</span></span>
+                    <br><br><span class="text">红网</span> <br>
+                    <br>
+                    <span class="text">4月9日，全国扫黑办首次举办新闻发布会，公开发布最高人民法院、最高人民检察院、公安部和司法部联合印发的《关于办理恶势力刑事案件若干问题的意见》等四个意见。（4月10日《法制日报》）
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="product">
+                <h1>学习强国</h1>
+                <a>查看更多></a>
+            </div>
+            <div class="news-card">
+                <div class="news-img"><img src="img/news.png" alt=""></div>
+                <div class="news-text">
+                    <span><span style="color:#9932CC;font-size:2em;">|</span><span class="news-title">&nbsp;&nbsp;&nbsp;红网评论：让扫黑除恶始终在法治轨道.....</span></span>
+                    <br><br>
+                    <span class="text">红网</span><br>
+                    <br>
+                    <span class="text"> 4月9日，全国扫黑办首次举办新闻发布会，公开发布最高人民法院、最高人民检察院、公安部和司法部联合印发的《关于办理恶势力刑事案件若干问题的意见》等四个意见。（4月10日《法制日报》）
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product">
+        <h1>媒体报道</h1>
+    </div>
+    <img class="media" src="img/media.png" alt="">
+
+    <footer>
+        只是本人练习的一个小网站。 最后欣赏一个小视频
+
+        <video width="450" height="560" controls>
+                <source src=" https://flv2.bn.netease.com/videolib1/1905/12/4xid6gjm7/SD/4xid6gjm7-mobile.mp4" type="video/mp4">
+            
+              您的浏览器不支持Video标签。
+              </video>
+    </footer>
+
+
+</body>
+<script type="text/javascript">
+    function changeStart(context) {
+        context.innerHTML = '论坛/客服∧'
+    }
+
+    function changeEnd(context) {
+        context.innerHTML = '论坛/客服∨'
+    }
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+    clearInterval(timer);
+    currentSlide(1);
+    var timer = setInterval(() => {
+        plusSlides(1)
+    }, 3000);
+
+    function stopPlay() {
+        console.log(3)
+        clearInterval(timer)
+    }
+
+    function startPlay() {
+        clearInterval(timer)
+        console.log(2)
+        timer = setInterval(() => {
+            plusSlides(1)
+        }, 3000);
+    }
+
+    var play1 = document.getElementById("play");
+    play1.onmouseover = stopPlay;
+    play1.onmouseout = startPlay;
+</script>
+
+</html>
