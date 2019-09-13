@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     .contioner{
+         position: relative;
+     }
+      .son1{
+          display: inline-block;
+          height: 40px;
+          width: 30px;
+          position: relative;
+      }
+    </style>
+</head>
+<body>
+    <div id="contioner">      
+    </div>
+    <script>
+        for(var i=0;i<50;i++){
+            var son = document.createElement("div");
+            son.className = 'son1'
+            son.style.background = '#'+Math.floor(Math.random()*0xffffff).toString(16);
+            document.getElementById('contioner').appendChild(son)
+        }
+        function refreshQuery(){
+            for(var i=0;i<50;i++){
+            var son2 = document.getElementsByClassName('son1')
+            son2[i].style.top = Math.random() * 1500 + 'px';
+            son2[i].style.left = Math.random() * 600 + 'px';
+        }
+    }
+        setInterval('refreshQuery()',1000);   
+    </script>
+</body>
+</html>
