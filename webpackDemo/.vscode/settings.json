@@ -1,0 +1,7 @@
+{
+  "mocha.requires": [
+    "babel-register"
+  ],
+  "mocha.showErrorPopup": true,
+  "mocha.runTestsOnSave": "true"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "gisCli",
+  "main": "src/index.js",
+  "bin": {
+    "gisCli": "src/index.js"
+  },
+  "scripts": {
+    "test": "nyc mocha",
+    "start": "webpack",
+    "server": "webpack-dev-server --open"
+  },
+  "keywords": [],
+  "author": "doubleZ",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/register": "^7.7.4",
+    "autoprefixer": "^9.7.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-istanbul": "^0.12.2",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-istanbul": "^5.2.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.1",
+    "download-git-repo": "^3.0.2",
+    "eslint": "^6.7.2",
+    "eslint-config-google": "^0.14.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "log-symbols": "^3.0.0",
+    "mocha": "^6.2.2",
+    "mochawesome": "^4.1.0",
+    "nyc": "^14.1.1",
+    "ora": "^4.0.3",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.0.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "yargs": "^15.0.2"
+  }
+}
