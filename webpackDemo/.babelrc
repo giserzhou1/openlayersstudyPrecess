@@ -1,4 +1,6 @@
 //.babelrc
 {
-  "presets": ["env"]
+  "presets": ["env"],
+  "sourceMaps": true,
+  "retainLines": true
 }

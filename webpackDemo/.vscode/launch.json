@@ -4,6 +4,7 @@
   // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    
   {
     "type": "node",
     "request": "launch",
@@ -29,7 +30,16 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\index.js"
+      "program": "${workspaceFolder}/dist/bundle.js",
+      "sourceMaps": true,
+      "trace": true,
+      "outFiles": ["${workspaceFolder}/dist/*"]
     }
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "port": 5858
+  }
   ]
 }

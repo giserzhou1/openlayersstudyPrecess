@@ -3,7 +3,7 @@
 
 ├── .nyc_output
 │   ├── processinfo
-│   │   ├── 240a7b71-11e7-4dad-8c08-93d47180bce4.json
+│   │   ├── 240a7b71-11e7-4dad-8c08-93d47180bce4.json  
 │   │   ├── 7ea651ff-877d-424c-b8e7-02351ae80bc2.json
 │   │   └── index.json
 │   ├── 240a7b71-11e7-4dad-8c08-93d47180bce4.json
